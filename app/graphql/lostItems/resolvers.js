@@ -27,12 +27,12 @@ const createLostItem = (_, { lostItem }) => {
     images: lostItem.images
   });
   newLostItem.id = newLostItem._id;
+
   return new Promise((resolve, reject) => {
     newLostItem.save(err => {
       if (err) {
         reject(err);
       } else {
-        // pubsub.publish(CUSTOMER_ADDED, { customerAdded: newLostItem });
         resolve(newLostItem);
       }
     });
@@ -47,9 +47,3 @@ module.exports = {
     createLostItem
   }
 };
-
-// Subscription: {
-//   onLogin: {
-//     subscribe: userLoggedIn.iter
-//   }
-// }

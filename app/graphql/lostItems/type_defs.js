@@ -5,7 +5,7 @@ const rootTypes = gql`
     lostItems(limit: Int, id: ID): [LostItem]
   }
   extend type Mutation {
-    createLostItem(lostItem: LostItemInput!): LostItem!
+    createLostItem(lostItem: LostItemInput!): LostItem
   }
 `;
 
@@ -13,9 +13,9 @@ const customTypes = gql`
   type LostItem {
     description: String!
     state: String!
-    userInfoStateLost: String!
-    userInfoStateDelivered: String!
-    images: [String]!
+    userInfoStateLost: String
+    userInfoStateDelivered: String
+    images: [String]
     id: ID!
   }
 `;
@@ -26,7 +26,7 @@ const inputTypes = gql`
     state: String!
     userInfoStateLost: String
     userInfoStateDelivered: String
-    images: [String]!
+    images: [String!]
   }
 `;
 
