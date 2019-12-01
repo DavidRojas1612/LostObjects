@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const { lostItemsModel: LostItems } = require('../../models');
 
-const getLostItems = (_, { id, limit }) => {
+const getLostItems = (_, { id, limit, state }) => {
   if (id) {
     return new Promise((resolve, reject) => {
       LostItems.findById(id, (err, item) => {
@@ -14,6 +14,8 @@ const getLostItems = (_, { id, limit }) => {
     });
   } else if (limit) {
     return LostItems.find({}).limit(limit);
+  } else if (state) {
+    return LostItems.find({ state });
   }
   return LostItems.find({});
 };

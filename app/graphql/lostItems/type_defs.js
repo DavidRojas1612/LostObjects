@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const rootTypes = gql`
   extend type Query {
-    lostItems(limit: Int, id: ID): [LostItem]
+    lostItems(limit: Int, id: ID, state: String): [LostItem]
   }
   extend type Mutation {
     createLostItem(lostItem: LostItemInput!): LostItem
