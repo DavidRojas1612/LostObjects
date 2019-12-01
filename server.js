@@ -4,7 +4,9 @@ const { ApolloServer } = require('apollo-server'),
 
 const port = 8080;
 
-new ApolloServer({ schema, playground: true }).listen(port).then(({ url, subscriptionsUrl }) => {
-  logger.info(`🚀 Server ready at ${url}`);
-  logger.info(`🚀 Subscriptions ready at ${subscriptionsUrl}`);
-});
+new ApolloServer({ schema, introspection: true, playground: true })
+  .listen(port)
+  .then(({ url, subscriptionsUrl }) => {
+    logger.info(`🚀 Server ready at ${url}`);
+    logger.info(`🚀 Subscriptions ready at ${subscriptionsUrl}`);
+  });
