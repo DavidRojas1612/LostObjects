@@ -7,22 +7,7 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "console": "node console.js",
-    "cover": "NODE_ENV=testing npm run test -- --coverage",
-    "test": "NODE_ENV=testing jest test/app --runInBand --forceExit --detectOpenHandles",
-    "test-inspect": "NODE_ENV=testing node --inspect --debug-brk jest test/app",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "eslint-check": "eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
-    "lint": "eslint \"**/*.js\" --ignore-pattern ./.eslintrc.js",
-    "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
-    "lint-fix": "eslint \"**/*.js\" --fix --ignore-pattern ./.eslintrc.js",
-    "precommit": "npm run lint",
-    "outdated": "npm outdated --depth 0",
-    "pretest": "npm run lint",
-    "prestart": "npm run lint",
-    "migrations": "sequelize db:migrate",
-    "migrations-test": "NODE_ENV=testing npm run migrations",
-    "start": "nodemon --inspect server.js",
+    "start": "nodemon  server.js",
     "serve": "node server.js"
   },
   "cacheDirectories": [
