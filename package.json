@@ -7,8 +7,8 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "start": "nodemon  server.js",
-    "serve": "node server.js"
+    "start": "node  server.js",
+    "serve": "nodemon  server.js"
   },
   "cacheDirectories": [
     "node_modules"
