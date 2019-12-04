@@ -12,14 +12,16 @@ const getLostItems = (_, { id, limit, state, offset }) => {
         }
       });
     });
-  } else if (limit) {
-    return LostItems.find({}).limit(limit);
-  } else if (state) {
-    return LostItems.find({ state });
   } else if (offset && limit && state) {
     return LostItems.find({ state })
       .skip(offset)
       .limit(limit);
+  } else if (limit && state) {
+    return LostItems.find({ state }).limit(limit);
+  } else if (state) {
+    return LostItems.find({ state });
+  } else if (limit) {
+    return LostItems.find({}).limit(limit);
   }
   return LostItems.find({});
 };
