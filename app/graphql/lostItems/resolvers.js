@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const { lostItemsModel: LostItems } = require('../../models');
 
-const getLostItems = (_, { id, limit, state, offset }) => {
+const getLostItems = (_, { id, limit, state, offset, description }) => {
   if (id) {
     return new Promise((resolve, reject) => {
       LostItems.findById(id, (err, item) => {
@@ -12,6 +12,8 @@ const getLostItems = (_, { id, limit, state, offset }) => {
         }
       });
     });
+  } else if (description) {
+    return LostItems.find({ description: { $regex: description, $options: 'i' } });
   } else if (offset && limit && state) {
     return LostItems.find({ state })
       .skip(offset)
