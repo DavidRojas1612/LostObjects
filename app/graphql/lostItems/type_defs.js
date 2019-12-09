@@ -6,6 +6,7 @@ const rootTypes = gql`
   }
   extend type Mutation {
     createLostItem(lostItem: LostItemInput!): LostItem
+    updateLostItem(id: ID!, state: String!, userInfoStateDelivered: String): LostItem
   }
 `;
 

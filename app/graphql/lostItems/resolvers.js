@@ -1,4 +1,6 @@
+/* eslint-disable no-extra-parens */
 /* eslint-disable no-underscore-dangle */
+
 const { lostItemsModel: LostItems } = require('../../models');
 
 const getLostItems = (_, { id, limit, state, offset, description }) => {
@@ -49,11 +51,28 @@ const createLostItem = (_, { lostItem }) => {
   });
 };
 
+const updateLostItem = (_, { id, state, userInfoStateDelivered }) =>
+  new Promise((resolve, reject) => {
+    LostItems.findByIdAndUpdate(
+      id,
+      { state, ...(state === 'delivered' && { userInfoStateDelivered }) },
+      (err, item) => {
+        if (err) {
+          reject(err);
+        }
+        if (item) {
+          resolve(item);
+        }
+      }
+    );
+  });
+
 module.exports = {
   Query: {
     lostItems: getLostItems
   },
   Mutation: {
-    createLostItem
+    createLostItem,
+    updateLostItem
   }
 };
